@@ -15,6 +15,9 @@ class ExerciseActivity : AppCompatActivity() {
     private var exerciseTimer:CountDownTimer? = null
     private var restProgress = 0
     private var workProgress = 0
+
+    private var exerciseList:ArrayList<ExerciseModel>?=null
+    private var currentExercisePosition = -1
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_exercise)
@@ -30,6 +33,7 @@ class ExerciseActivity : AppCompatActivity() {
         }
 
         setupRestView()
+        exerciseList = Constants.defaultExerciseList()
 
 
     }
@@ -60,6 +64,7 @@ class ExerciseActivity : AppCompatActivity() {
 
             override fun onFinish() {
              //   Toast.makeText(this@ExerciseActivity,"Start working", Toast.LENGTH_SHORT).show()
+                currentExercisePosition++
                 setupExerciseView()
             }
 
