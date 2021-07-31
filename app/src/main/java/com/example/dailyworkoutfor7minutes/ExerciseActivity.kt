@@ -32,13 +32,14 @@ class ExerciseActivity : AppCompatActivity() {
             onBackPressed()
         }
 
-        setupRestView()
+
         exerciseList = Constants.defaultExerciseList()
+        setupRestView()
 
 
     }
 
-    override fun onDestroy() {
+   public override fun onDestroy() {
         if(restTimer!=null){
             restTimer!!.cancel()
             restProgress = 0
@@ -82,13 +83,20 @@ class ExerciseActivity : AppCompatActivity() {
             }
 
             override fun onFinish() {
-                Toast.makeText(this@ExerciseActivity,"Good work", Toast.LENGTH_SHORT).show()
+
+                if (currentExercisePosition < exerciseList!!.size-1){
+                    setupRestView()
+                }else {
+                    Toast.makeText(this@ExerciseActivity, "You Did It", Toast.LENGTH_SHORT).show()
+                }
             }
 
         }.start()
     }
 
     private fun setupRestView(){
+        llRestView.visibility = View.VISIBLE
+        llExerciseView.visibility = View.GONE
         if(restTimer!=null){
             restTimer!!.cancel()
             restProgress = 0
@@ -105,6 +113,8 @@ class ExerciseActivity : AppCompatActivity() {
            exerciseTimer!!.cancel()
             workProgress = 0
         }
+        ivImage.setImageResource(exerciseList!![currentExercisePosition].getImage())
+        tvExerciseName.text = exerciseList!![currentExercisePosition].getName()
         setWorkProgressBar()
     }
 }
