@@ -35,7 +35,7 @@ class ExerciseActivity : AppCompatActivity() {
 
         exerciseList = Constants.defaultExerciseList()
         setupRestView()
-
+    // Order of using exerciseList and setupRestView() method should be similar to what used otherwise nullpointerexception will occur
 
     }
 
@@ -84,8 +84,11 @@ class ExerciseActivity : AppCompatActivity() {
 
             override fun onFinish() {
 
+
                 if (currentExercisePosition < exerciseList!!.size-1){
                     setupRestView()
+                    nextExerciseText.text = exerciseList!![currentExercisePosition].getName()
+
                 }else {
                     Toast.makeText(this@ExerciseActivity, "You Did It", Toast.LENGTH_SHORT).show()
                 }
@@ -101,7 +104,9 @@ class ExerciseActivity : AppCompatActivity() {
             restTimer!!.cancel()
             restProgress = 0
         }
+        nextExerciseText.text = exerciseList!![currentExercisePosition+1].getName() // Getting the name of next exercise in rest view
         setRestProgressBar()
+
     }
 
 
@@ -109,10 +114,12 @@ class ExerciseActivity : AppCompatActivity() {
     private fun setupExerciseView(){
         llRestView.visibility = View.GONE
         llExerciseView.visibility = View.VISIBLE
-        if(exerciseTimer!=null){
+      /*  if(exerciseTimer!=null){
            exerciseTimer!!.cancel()
             workProgress = 0
-        }
+        } */
+        exerciseTimer?.cancel() // Another way of null check
+        workProgress = 0
         ivImage.setImageResource(exerciseList!![currentExercisePosition].getImage())
         tvExerciseName.text = exerciseList!![currentExercisePosition].getName()
         setWorkProgressBar()
