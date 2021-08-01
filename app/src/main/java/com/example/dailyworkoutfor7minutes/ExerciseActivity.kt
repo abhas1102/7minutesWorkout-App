@@ -4,12 +4,16 @@ import android.opengl.Visibility
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.CountDownTimer
+import android.speech.tts.TextToSpeech
+import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.ActionBar
 import kotlinx.android.synthetic.main.activity_exercise.*
+import java.util.*
+import kotlin.collections.ArrayList
 
-class ExerciseActivity : AppCompatActivity() {
+class ExerciseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
 
     private var restTimer:CountDownTimer? = null
     private var exerciseTimer:CountDownTimer? = null
@@ -18,6 +22,7 @@ class ExerciseActivity : AppCompatActivity() {
 
     private var exerciseList:ArrayList<ExerciseModel>?=null
     private var currentExercisePosition = -1
+    private var tts:TextToSpeech?=null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_exercise)
@@ -31,6 +36,7 @@ class ExerciseActivity : AppCompatActivity() {
         toolbar_exercise_activity.setNavigationOnClickListener {
             onBackPressed()
         }
+        tts = TextToSpeech(this,this)
 
 
         exerciseList = Constants.defaultExerciseList()
@@ -48,6 +54,9 @@ class ExerciseActivity : AppCompatActivity() {
             exerciseTimer!!.cancel()
             workProgress = 0
         }
+
+       tts?.stop()  //If TextToSpeech is speaking while shutdown the activity stop it and shut down
+       tts?.shutdown()
         super.onDestroy()
     }
 
@@ -94,8 +103,10 @@ class ExerciseActivity : AppCompatActivity() {
           } */
         exerciseTimer?.cancel() // Another way of null check
         workProgress = 0
+        speakName(exerciseList!![currentExercisePosition].getName())
         ivImage.setImageResource(exerciseList!![currentExercisePosition].getImage())
         tvExerciseName.text = exerciseList!![currentExercisePosition].getName()
+
         setWorkProgressBar()
     }
 
@@ -124,8 +135,19 @@ class ExerciseActivity : AppCompatActivity() {
         }.start()
     }
 
-
-
+    override fun onInit(status: Int) {
+        if(status==TextToSpeech.SUCCESS){  //It is to check whether TextToSpeech in device is installed or not
+            val result = tts!!.setLanguage(Locale.US) // We want to set the language to US
+            if(result == TextToSpeech.LANG_MISSING_DATA || result == TextToSpeech.LANG_NOT_SUPPORTED){
+                    Log.e("TTS","The language specified is not supported")
+            }
+        } else{
+            Log.e("TTS","Initialisation failed")
+        }
+    }
+    private fun speakName(text:String){
+        tts!!.speak(text,TextToSpeech.QUEUE_FLUSH,null,"")
+    }
 
 
 }
