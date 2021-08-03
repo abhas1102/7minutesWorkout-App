@@ -93,6 +93,7 @@
         android:id="@+id/llExerciseView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_above="@+id/rvExerciseStatus"
         android:layout_below="@id/toolbar_exercise_activity"
         android:gravity="center"
         android:orientation="vertical"
