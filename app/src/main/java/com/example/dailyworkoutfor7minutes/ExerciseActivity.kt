@@ -1,5 +1,6 @@
 package com.example.dailyworkoutfor7minutes
 
+import android.content.Intent
 import android.media.MediaPlayer
 import android.opengl.Visibility
 import androidx.appcompat.app.AppCompatActivity
@@ -149,7 +150,10 @@ class ExerciseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
 
                     setupRestView()
                 }else {
-                    Toast.makeText(this@ExerciseActivity, "You Did It", Toast.LENGTH_SHORT).show()
+                  //  Toast.makeText(this@ExerciseActivity, "You Did It", Toast.LENGTH_SHORT).show()
+                    finish()
+                    val intent = Intent(this@ExerciseActivity,FinishActivity::class.java)
+                    startActivity(intent)
                 }
             }
 
