@@ -98,11 +98,11 @@ class ExerciseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
 
     private fun setRestProgressBar(){
         progressBar.progress = restProgress
-        restTimer = object :CountDownTimer(10000,1000){
+        restTimer = object :CountDownTimer(2000,1000){
             override fun onTick(millisUntilFinished: Long) {
                 restProgress++
-                progressBar.progress = 10-restProgress
-                tvTimer.text = (10-restProgress).toString()
+                progressBar.progress = 2-restProgress
+                tvTimer.text = (2-restProgress).toString()
             }
 
             override fun onFinish() {
@@ -135,11 +135,11 @@ class ExerciseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
     private fun setWorkProgressBar(){
 
         exercise_progressBar.progress = workProgress
-        exerciseTimer = object :CountDownTimer(30000,1000){
+        exerciseTimer = object :CountDownTimer(2000,1000){
             override fun onTick(millisUntilFinished: Long) {
                 workProgress++
-                exercise_progressBar.progress = 30-workProgress
-                exercise_tvTimer.text = (30-workProgress).toString()
+                exercise_progressBar.progress = 2-workProgress
+                exercise_tvTimer.text = (2-workProgress).toString()
             }
 
             override fun onFinish() {
