@@ -12,7 +12,7 @@ class HistoryActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_history)
 
-        setSupportActionBar(toolbar_history_activity)
+
         val actionbar = supportActionBar
         if (actionbar!=null){
             actionbar.setDisplayHomeAsUpEnabled(true)
