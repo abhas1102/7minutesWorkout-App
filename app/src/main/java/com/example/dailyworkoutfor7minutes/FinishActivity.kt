@@ -18,6 +18,7 @@ class FinishActivity : AppCompatActivity() {
         val actionbar = supportActionBar
         if (actionbar!=null){
             actionbar.setDisplayHomeAsUpEnabled(true)
+            actionbar.title = "Finished"
         }
 
         finish_activity_toolbar.setNavigationOnClickListener {

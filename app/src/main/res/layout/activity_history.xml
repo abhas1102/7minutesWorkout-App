@@ -42,7 +42,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center"
-            android:text="NO DATA AVAILABLE"
+            android:text="Finish Atleast One Cycle Of Exercise To See The Data Here"
             android:textColor="@color/black"
             android:textSize="18sp"
             android:visibility="visible"

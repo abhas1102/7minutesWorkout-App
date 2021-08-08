@@ -16,7 +16,7 @@ class HistoryActivity : AppCompatActivity() {
         val actionbar = supportActionBar
         if (actionbar!=null){
             actionbar.setDisplayHomeAsUpEnabled(true)
-            actionbar.title = "History Activity"
+            actionbar.title = "Daily Workout Report"
         }
         toolbar_history_activity.setNavigationOnClickListener {
             onBackPressed()

@@ -28,7 +28,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="GET READY TO BE BORED"
+            android:text="LET'S DO IT"
             android:textColor="@color/colorAccent"
             android:textSize="22sp"
             android:textStyle="bold"/>
@@ -101,14 +101,15 @@
         tools:visibility="visible">
 
 
-        <ImageView
+        <pl.droidsonroids.gif.GifImageView
             android:id="@+id/ivImage"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:contentDescription="@string/image"
             android:scaleType="fitXY"
-            android:src="@drawable/ic_jumping_jacks"/>
+            android:src="@drawable/ic_need"
+            />
+
 
         <TextView
             android:id="@+id/tvExerciseName"
