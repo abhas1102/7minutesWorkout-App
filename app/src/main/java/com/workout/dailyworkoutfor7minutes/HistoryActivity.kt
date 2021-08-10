@@ -4,12 +4,19 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.MobileAds
 import kotlinx.android.synthetic.main.activity_history.*
+import kotlinx.android.synthetic.main.activity_main.*
 
 class HistoryActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_history)
+
+        MobileAds.initialize(this@HistoryActivity)
+        val adRequest = AdRequest.Builder().build()
+        adViewHistoryScreen.loadAd(adRequest)
 
 
         val actionbar = supportActionBar

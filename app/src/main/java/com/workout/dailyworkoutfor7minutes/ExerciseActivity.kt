@@ -10,7 +10,10 @@ import android.speech.tts.TextToSpeech
 import android.util.Log
 import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.MobileAds
 import kotlinx.android.synthetic.main.activity_exercise.*
+import kotlinx.android.synthetic.main.activity_history.*
 import kotlinx.android.synthetic.main.item_custom_back_confirmation.*
 import java.lang.Exception
 import java.util.*
@@ -32,6 +35,9 @@ class ExerciseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_exercise)
+        MobileAds.initialize(this@ExerciseActivity)
+        val adRequest = AdRequest.Builder().build()
+        adViewRestTimer.loadAd(adRequest)
 
         setSupportActionBar(toolbar_exercise_activity)
         val actionbar = supportActionBar
