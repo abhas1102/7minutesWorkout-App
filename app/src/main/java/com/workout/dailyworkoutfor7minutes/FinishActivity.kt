@@ -1,10 +1,12 @@
-package com.example.dailyworkoutfor7minutes
+package com.workout.dailyworkoutfor7minutes
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import kotlinx.android.synthetic.main.activity_exercise.*
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.MobileAds
 import kotlinx.android.synthetic.main.activity_finish.*
+import kotlinx.android.synthetic.main.activity_main.*
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -12,6 +14,10 @@ class FinishActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_finish)
+
+        MobileAds.initialize(this@FinishActivity)
+        val adRequest = AdRequest.Builder().build()
+        adViewFinishScreen.loadAd(adRequest)
 
         setSupportActionBar(finish_activity_toolbar)
 

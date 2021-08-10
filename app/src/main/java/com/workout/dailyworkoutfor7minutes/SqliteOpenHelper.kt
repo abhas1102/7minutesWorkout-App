@@ -1,4 +1,4 @@
-package com.example.dailyworkoutfor7minutes
+package com.workout.dailyworkoutfor7minutes
 
 import android.content.ContentValues
 import android.content.Context

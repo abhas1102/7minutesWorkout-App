@@ -1,17 +1,14 @@
-package com.example.dailyworkoutfor7minutes
+package com.workout.dailyworkoutfor7minutes
 
 import android.app.Dialog
 import android.content.Intent
 import android.media.MediaPlayer
-import android.opengl.Visibility
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.speech.tts.TextToSpeech
 import android.util.Log
 import android.view.View
-import android.widget.Toast
-import androidx.appcompat.app.ActionBar
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.activity_exercise.*
 import kotlinx.android.synthetic.main.item_custom_back_confirmation.*

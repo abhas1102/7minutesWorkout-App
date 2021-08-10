@@ -1,8 +1,7 @@
-package com.example.dailyworkoutfor7minutes
+package com.workout.dailyworkoutfor7minutes
 
 import android.content.Context
 import android.graphics.Color
-import android.text.Layout
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
